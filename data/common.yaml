@@ -1,0 +1,13 @@
+---
+profile_nfs::mount_dir: '/srv/nfs_root'
+profile_nfs::data_device: '/dev/vdb'
+profile_nfs::server: false
+profile_nfs::domain: "%{facts.networking.fqdn}"
+profile_nfs::export_root: /export
+profile_nfs::root_clients: "*.%{hiera('profile_nfs::domain')}(ro,fsid=0,insecure,no_subtree_check,async,no_root_squash)"
+profile_nfs::manage_firewall_entry: true
+profile_nfs::exports: {}
+profile_nfs::export_defaults: {}
+profile_nfs::nfs_backup: true
+profile_nfs::mount_root: /srv
+...
